@@ -36,7 +36,9 @@ create: function() {
 
 		         game.physics.arcade.overlap(this.bird, this.pipes, this.hitPipe, null, this); 
 
-		         // Rotate the bird    
+		         // Rotate the bird
+		 	if (this.bird.angle < 20)
+			         		this.bird.angle += 1;
 		  },
 
 	    jump: function() {
@@ -47,6 +49,7 @@ create: function() {
 		            this.bird.body.velocity.y = -350;
 
 		            // Jump animation
+		    game.add.tween(this.bird).to({angle: -20}, 100).start();
 		   },
 
 	    hitPipe: function() {
